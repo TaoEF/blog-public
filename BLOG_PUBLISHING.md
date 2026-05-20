@@ -4,6 +4,9 @@ This project publishes blog content to three different platforms. Keep API keys
 out of source files and pass them through environment variables or a local secret
 file ignored by git.
 
+For operational publishing steps, edge cases, and live-test supplements, read
+`API_USAGE.md` first. This file is the compact platform overview.
+
 ## Sologo Blog
 
 - Domain: `https://www.sologo.ai/`
@@ -101,6 +104,16 @@ Important image rule:
 - Content images should be uploaded through `act=upload` first, then inserted into
   `content` with returned OSS URLs. `publish` only handles the cover image.
 
+Important live-test limitations:
+
+- Only `types`, `upload`, and `publish` are publicly supported.
+- `publish` always creates a new article; passing `id` does not update.
+- `update`, `delete`, `remove`, `unpublish`, `status`, and `offline` returned
+  unsupported-action errors in testing.
+- Mistakes must currently be cleaned up in the management backend.
+- Avoid top-level `<article>`, `<figure>`, `<figcaption>`, and custom classes in
+  content.
+
 Validated categories on 2026-05-20:
 
 - `1`: LOGO设计攻略
@@ -140,6 +153,8 @@ Important image rules:
 - `featured_image_url` is downloaded and set as the featured image.
 - Already downloaded images are deduplicated by `_source_url`.
 - Failed content image downloads remove those image tags but do not block publishing.
+- Wikimedia SVG redirect URLs failed in testing. Stable PNG/JPG CDN or OSS URLs
+  worked.
 
 Validation note:
 

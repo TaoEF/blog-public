@@ -24,6 +24,7 @@ This is the durable project knowledge base for AI-assisted development.
 
 ## Contracts
 
+- `API_USAGE.md`
 - `.project-wiki/contracts/sologo-blog-api.md`
 - `.project-wiki/contracts/logomaker-design-school-api.md`
 - `.project-wiki/contracts/logosj-wordpress-api.md`

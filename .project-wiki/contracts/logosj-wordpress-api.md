@@ -48,6 +48,7 @@ published posts and import external images into the WordPress media library.
 - Publish live posts with `status = "publish"`.
 - Send `categories` and `tags` as arrays.
 - Let the plugin import external images in `content` and `featured_image_url`.
+- Use stable PNG/JPG URLs for images. CDN/OSS image URLs worked in live testing.
 
 ## Failure Modes
 
@@ -57,14 +58,15 @@ published posts and import external images into the WordPress media library.
   creation.
 - Missing categories by name may be auto-created, which can create taxonomy
   drift if names are inconsistent.
+- Wikimedia SVG redirect URLs failed image import in live testing.
 
 ## Update Rules
 
 - Treat WordPress categories as controlled vocabulary before recurring tasks.
 - Keep real API key in local secrets only.
+- Check `images_processed` and `images_failed` after every publish.
 
 ## Open Questions
 
 - Which category names should be canonical for scheduled publishing?
 - Should auto-created categories be allowed?
-

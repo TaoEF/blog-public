@@ -75,6 +75,8 @@ template behavior changes.
 - `dict_status = 2` was documented as draft, but article ID `93` was reachable
   on the front end by slug. Treat Sologo draft status as potentially public
   until verified otherwise.
+- If H2 spacing looks too tight, add a spacer paragraph before H2 or fix the
+  platform CSS.
 
 Validated categories on 2026-05-20:
 

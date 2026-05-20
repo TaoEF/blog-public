@@ -6,6 +6,7 @@ AGENTS.md
 CODEX.md
 CLAUDE.md
 BLOG_PUBLISHING.md
+API_USAGE.md
 README.md
 .harness/index.md
 .harness/catalog.md
