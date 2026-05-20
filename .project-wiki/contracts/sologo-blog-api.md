@@ -34,6 +34,7 @@ publishing, listing categories, and uploading images for blog posts.
 - Base endpoint: `api.php?op=blog_post&act={action}`
 - Auth header: `X-API-Key: $SOLOGO_BLOG_API_KEY`
 - Create action: `POST act=create`
+- List action: `GET act=list`
 - Required create fields: `title`, `content`
 - Optional category field: `category_id`
 - Tags format: comma-separated string
@@ -89,6 +90,7 @@ Validated categories on 2026-05-20:
 ## Workflows
 
 - List categories with `GET act=categories`.
+- List articles with `GET act=list`.
 - Create drafts with `POST act=create` and default `dict_status = 2`.
 - Publish with either `dict_status = 1` during create or `POST act=publish`.
 - Upload images with `POST act=upload_image`.

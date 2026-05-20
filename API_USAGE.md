@@ -56,6 +56,7 @@ The long-term fix is platform CSS for article-body `h2` margins.
 Actions:
 
 - `GET categories`
+- `GET list`
 - `POST create`
 - `POST update`
 - `POST delete`
@@ -114,6 +115,16 @@ Image upload:
 }
 ```
 
+List:
+
+```http
+GET api.php?op=blog_post&act=list&keyword=Peacock&page=1&pagesize=5
+```
+
+Useful filters include `category_id`, `tag`, `dict_blog_author`,
+`dict_status`, `keyword`, `start_time`, `end_time`, `page`, `pagesize`, and
+`orderby`.
+
 Sologo live-test rules:
 
 - Do not send a top-level `<article>`.
@@ -141,18 +152,18 @@ Supported actions:
 - `GET types`
 - `POST upload`
 - `POST publish`
+- `POST lists`
+- `POST update`
+- `POST unpublish`
 
 Tested unsupported actions:
 
-- `update`
 - `delete`
 - `remove`
-- `unpublish`
 - `status`
 - `offline`
 
-Important: `publish` always creates a new article. Passing an `id` does not
-update an existing article.
+Important: `publish` creates a new article. Use `update` for existing articles.
 
 Publish:
 
@@ -175,8 +186,7 @@ Status:
 - `status = 1`: valid/live
 - `status = 0`: invalid, but only at create time
 
-Because there is no public update/status/delete API, mistakes must be fixed in
-the management backend.
+Use `update` to edit existing articles and `unpublish` to set `status = 0`.
 
 Image upload:
 
@@ -191,6 +201,60 @@ Image upload:
 
 Use returned `https://pro.upload.logomaker.com.cn/design_school/...` URLs inside
 `content`.
+
+List:
+
+```json
+{
+  "page": 1,
+  "pagesize": 10,
+  "type": 1,
+  "status": 1,
+  "keyword": "Peacock",
+  "order": "id",
+  "sortby": "desc"
+}
+```
+
+Endpoint:
+
+```http
+POST api.php?op=design_school&act=lists
+```
+
+Update:
+
+```json
+{
+  "id": 324,
+  "title": "Peacock新Logo设计分析",
+  "content": "<p>Updated HTML</p>",
+  "status": 1
+}
+```
+
+Endpoint:
+
+```http
+POST api.php?op=design_school&act=update
+```
+
+Only send fields that need changing.
+
+Unpublish:
+
+```json
+{ "id": 322 }
+```
+
+Endpoint:
+
+```http
+POST api.php?op=design_school&act=unpublish
+```
+
+This sets `status = 0`. It was used successfully to unpublish old Peacock test
+articles `322`, `323`, and `325`.
 
 Cover image:
 
@@ -219,6 +283,14 @@ Validated categories:
 
 - Endpoint: `https://www.logosj.com/wp-json/ai-publisher/v1/publish`
 - Auth: `X-API-Key: $LOGOSJ_WP_API_KEY`
+
+Additional endpoints:
+
+- `PUT /wp-json/ai-publisher/v1/publish/{id}`: update post
+- `POST /wp-json/ai-publisher/v1/publish/{id}/publish`: set post live
+- `POST /wp-json/ai-publisher/v1/publish/{id}/draft`: set post to draft/down
+- `GET /wp-json/ai-publisher/v1/categories`: query categories
+- `GET /wp-json/ai-publisher/v1/posts`: query posts
 
 Publish:
 
@@ -272,5 +344,5 @@ Categories and tags:
 - Fetch the public URL when available.
 - Check title, images, and H2 spacing.
 - For Logosj, verify `images_failed = 0`.
-- For Logomaker, remember bad live articles cannot be fixed by current public
-  API; backend cleanup may be required.
+- For Logomaker, use `update` or `unpublish` rather than creating replacement
+  articles for fixable mistakes.

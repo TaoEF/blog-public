@@ -17,6 +17,7 @@ For operational publishing steps, edge cases, and live-test supplements, read
 ### Main Actions
 
 - `GET act=categories`: list categories.
+- `GET act=list`: query articles.
 - `POST act=create`: create article.
 - `POST act=update`: update article by `id`; send only fields to change.
 - `POST act=delete`: soft delete, accepts `id` or `ids`.
@@ -80,6 +81,9 @@ Observed on 2026-05-20 while publishing Sologo article ID `93`:
 - `GET act=types`: list categories.
 - `POST act=upload`: upload content images.
 - `POST act=publish`: publish article.
+- `POST act=lists`: query articles.
+- `POST act=update`: update article.
+- `POST act=unpublish`: set article `status = 0`.
 
 ### Publish Fields
 
@@ -104,13 +108,12 @@ Important image rule:
 - Content images should be uploaded through `act=upload` first, then inserted into
   `content` with returned OSS URLs. `publish` only handles the cover image.
 
-Important live-test limitations:
+Important live-test notes:
 
-- Only `types`, `upload`, and `publish` are publicly supported.
-- `publish` always creates a new article; passing `id` does not update.
-- `update`, `delete`, `remove`, `unpublish`, `status`, and `offline` returned
-  unsupported-action errors in testing.
-- Mistakes must currently be cleaned up in the management backend.
+- `types`, `upload`, `publish`, `lists`, `update`, and `unpublish` are publicly
+  supported.
+- `publish` creates a new article. Use `update` for existing articles.
+- `unpublish` sets `status = 0`.
 - Avoid top-level `<article>`, `<figure>`, `<figcaption>`, and custom classes in
   content.
 
@@ -145,6 +148,14 @@ Optional:
 - `featured_image_url`: public URL; downloaded to media library and set as featured image
 - `status`: `draft` or `publish`, default `draft`
 - `author`: int
+
+Additional supported actions:
+
+- `GET /categories`: query categories.
+- `GET /posts`: query posts.
+- `PUT /publish/{id}`: update post.
+- `POST /publish/{id}/publish`: set post live.
+- `POST /publish/{id}/draft`: set post to draft/down.
 
 Important image rules:
 

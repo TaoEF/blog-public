@@ -51,6 +51,9 @@ Date: 2026-05-20
 - Note: The API rejected the original title as too long despite being under 50
   visible characters, likely due to byte-length validation. The accepted title
   was shortened to `Peacock新Logo少了一个点`.
+- 2026-05-20 update after API docs changed: old error/test articles `322`,
+  `323`, and `325` were successfully unpublished through `act=unpublish`, each
+  returning `status = 0`. Correct article `324` remains live.
 
 ## Follow-Ups Before Final Publishing
 

@@ -40,11 +40,10 @@ uploading article images, and publishing design-school articles.
 - Tags format: space-separated string
 - Active status field: `status`, where `1` means valid and `0` means invalid
 - Cover fields: `image_url` preferred; fallback `img_thumb`
-- Publicly supported actions are `types`, `upload`, and `publish`.
-- Tested but unsupported actions: `update`, `delete`, `remove`, `unpublish`,
-  `status`, and `offline`.
-- `publish` always creates a new article. Passing an `id` does not update an
-  existing article.
+- Publicly supported actions are `types`, `upload`, `publish`, `lists`,
+  `update`, and `unpublish`.
+- `publish` creates a new article. Use `update` for existing articles.
+- `unpublish` sets `status = 0`.
 
 Validated categories on 2026-05-20:
 
@@ -58,6 +57,9 @@ Validated categories on 2026-05-20:
 - Upload content images first with `POST act=upload`.
 - Insert returned OSS URLs into `content`.
 - Publish with `POST act=publish`.
+- Query articles with `POST act=lists`.
+- Update articles with `POST act=update`.
+- Unpublish articles with `POST act=unpublish`.
 - Use `image_url` for cover images. Do not pass a full external URL as
   `img_thumb`; it can produce malformed duplicated URLs.
 - Use simple HTML only. Avoid top-level `<article>`, `<figure>`,
@@ -72,8 +74,7 @@ Validated categories on 2026-05-20:
 - `10304`: external image request failed.
 - Sending content image URLs that were not uploaded first can break the intended
   content-image workflow.
-- Mistakes cannot currently be fixed through the public API. Cleanup requires
-  the management backend.
+- Older docs lacked update/unpublish; current docs now support those actions.
 - Page CSS/scripts can conflict with rich HTML structures or custom classes.
 - The page script transforms `.d_s_details_container .template` images into
   template-editor widgets, so never use `class="template"` in API content.
@@ -84,8 +85,8 @@ Validated categories on 2026-05-20:
 
 - Re-verify categories before scheduled publishing.
 - Keep title and abstract length checks in any adapter or preflight.
-- Treat published Logomaker articles as immutable from this API until an update
-  or status endpoint is added.
+- Use `update` or `unpublish` for corrections instead of creating duplicate
+  replacement articles.
 
 ## Open Questions
 

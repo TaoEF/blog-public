@@ -34,6 +34,11 @@ published posts and import external images into the WordPress media library.
 - Domain: `https://www.logosj.com/`
 - Base endpoint: `/wp-json/ai-publisher/v1`
 - Publish endpoint: `POST /wp-json/ai-publisher/v1/publish`
+- Update endpoint: `PUT /wp-json/ai-publisher/v1/publish/{id}`
+- Publish existing post: `POST /wp-json/ai-publisher/v1/publish/{id}/publish`
+- Draft/down existing post: `POST /wp-json/ai-publisher/v1/publish/{id}/draft`
+- Categories endpoint: `GET /wp-json/ai-publisher/v1/categories`
+- Posts endpoint: `GET /wp-json/ai-publisher/v1/posts`
 - Auth header: `X-API-Key: $LOGOSJ_WP_API_KEY`
 - Required publish fields: `title`, `content`
 - Categories format: array of IDs or names
@@ -46,6 +51,11 @@ published posts and import external images into the WordPress media library.
 
 - Create drafts with `status = "draft"`.
 - Publish live posts with `status = "publish"`.
+- Update existing posts with `PUT /publish/{id}`.
+- Move existing posts live with `POST /publish/{id}/publish`.
+- Move existing posts back to draft/down with `POST /publish/{id}/draft`.
+- Query categories with `GET /categories`.
+- Query posts with `GET /posts`.
 - Send `categories` and `tags` as arrays.
 - Let the plugin import external images in `content` and `featured_image_url`.
 - Use stable PNG/JPG URLs for images. CDN/OSS image URLs worked in live testing.
