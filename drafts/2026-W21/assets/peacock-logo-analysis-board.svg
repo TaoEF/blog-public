@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-label="Peacock logo update analysis board">
+  <rect width="1400" height="820" fill="#f6f7fb"/>
+  <rect x="60" y="60" width="1280" height="700" rx="28" fill="#ffffff" stroke="#d9deea" stroke-width="2"/>
+  <text x="110" y="132" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#10151f">Peacock Logo Update: What Changed?</text>
+  <text x="110" y="178" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#5d6678">Editorial analysis graphic, not an official Peacock asset</text>
+
+  <rect x="110" y="235" width="520" height="330" rx="20" fill="#111111"/>
+  <text x="150" y="310" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="700" fill="#ffffff">peacock</text>
+  <circle cx="525" cy="275" r="15" fill="#f2453d"/>
+  <circle cx="525" cy="315" r="15" fill="#f6a21a"/>
+  <circle cx="525" cy="355" r="15" fill="#ffdf38"/>
+  <circle cx="525" cy="395" r="15" fill="#4caf50"/>
+  <circle cx="525" cy="435" r="15" fill="#2677d9"/>
+  <circle cx="525" cy="475" r="15" fill="#8138b8"/>
+  <text x="150" y="612" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#10151f">Earlier system</text>
+  <text x="150" y="648" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#5d6678">More visual detail in the color-dot stack</text>
+
+  <rect x="770" y="235" width="520" height="330" rx="20" fill="#111111"/>
+  <text x="810" y="330" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" fill="#ffffff">peacock</text>
+  <circle cx="1180" cy="292" r="17" fill="#f2453d"/>
+  <circle cx="1180" cy="338" r="17" fill="#f6a21a"/>
+  <circle cx="1180" cy="384" r="17" fill="#ffdf38"/>
+  <circle cx="1180" cy="430" r="17" fill="#4caf50"/>
+  <circle cx="1180" cy="476" r="17" fill="#2677d9"/>
+  <text x="810" y="612" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#10151f">2026 direction</text>
+  <text x="810" y="648" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#5d6678">Tighter stack, larger wordmark, cleaner app behavior</text>
+
+  <path d="M670 385 L730 385" stroke="#bbc3d3" stroke-width="6" stroke-linecap="round"/>
+  <path d="M720 365 L745 385 L720 405" fill="none" stroke="#bbc3d3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="110" y="695" width="360" height="44" rx="22" fill="#edf3ff"/>
+  <text x="132" y="724" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#2356a2">One fewer dot reduces noise</text>
+  <rect x="505" y="695" width="330" height="44" rx="22" fill="#edf8f1"/>
+  <text x="527" y="724" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#1f7a43">The lettermark leads faster</text>
+  <rect x="870" y="695" width="390" height="44" rx="22" fill="#fff5e5"/>
+  <text x="892" y="724" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#9a5b00">Better fit for mobile and TV icons</text>
+</svg>

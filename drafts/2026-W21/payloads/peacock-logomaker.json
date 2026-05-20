@@ -1,0 +1,20 @@
+{
+  "target": "logomaker",
+  "endpoint": "api.php?op=design_school&act=publish",
+  "method": "POST",
+  "auth_header": "X-APP-Key",
+  "payload_status": "draft",
+  "content_file": "../chinese/peacock-logo-redesign-logomaker.md",
+  "payload": {
+    "title": "Peacock新Logo：流媒体品牌为何少了一个点",
+    "type": 1,
+    "abstract": "Peacock在2026年更新Logo，减少一个彩色圆点并优化字标。这个小变化体现了流媒体品牌在App图标和多屏场景中的识别效率竞争。",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/NBCUniversal_Peacock_Logo_(2026).svg",
+    "tags": "Peacock 流媒体Logo 品牌更新 Logo设计",
+    "status": 1,
+    "is_good": 0,
+    "order": 0
+  },
+  "pre_publish_note": "Upload in-article images through Logomaker act=upload before replacing image URLs in HTML content."
+}
+

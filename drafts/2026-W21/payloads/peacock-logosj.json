@@ -1,0 +1,17 @@
+{
+  "target": "logosj",
+  "endpoint": "/wp-json/ai-publisher/v1/publish",
+  "method": "POST",
+  "auth_header": "X-API-Key",
+  "payload_status": "draft",
+  "content_file": "../chinese/peacock-logo-redesign-logosj.md",
+  "payload": {
+    "title": "Peacock新Logo：流媒体品牌为什么少了一个彩色圆点？",
+    "excerpt": "Peacock在2026年更新Logo，减少一个彩色圆点并优化字标。这个小改动背后，是流媒体品牌在移动端、电视端和App图标场景里的识别效率竞争。",
+    "categories": ["Logo设计"],
+    "tags": ["Peacock", "流媒体Logo", "品牌更新", "Logo设计"],
+    "featured_image_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/NBCUniversal_Peacock_Logo_(2026).svg",
+    "status": "draft"
+  }
+}
+

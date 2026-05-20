@@ -1,0 +1,21 @@
+{
+  "target": "sologo",
+  "endpoint": "api.php?op=blog_post&act=create",
+  "method": "POST",
+  "auth_header": "X-API-Key",
+  "payload_status": "draft",
+  "content_file": "../english/peacock-logo-redesign-sologo.md",
+  "payload": {
+    "title": "Why Peacock Changed Its Streaming Logo: One Less Dot, Better App Icon Design",
+    "category_id": 1,
+    "tags": "Peacock,streaming logo design,app icon,logo redesign,brand refresh",
+    "summary": "Peacock's 2026 logo update is a small but useful lesson in streaming logo design: simplify the system, protect recognition, and make the mark work harder at app-icon size.",
+    "seo_uri": "why-peacock-changed-streaming-logo-one-less-dot",
+    "seo_title": "Why Peacock Changed Its Streaming Logo: App Icon and Streaming Logo Design",
+    "seo_keyword": "Peacock logo, streaming logo design, app icon logo, logo redesign, brand refresh",
+    "seo_desc": "Peacock's 2026 logo update removes one dot and refines the wordmark. Here is why the small change matters for streaming brands, app icons, and modern logo design.",
+    "img_cover": "https://commons.wikimedia.org/wiki/Special:Redirect/file/NBCUniversal_Peacock_Logo_(2026).svg",
+    "dict_blog_author": 1,
+    "dict_status": 2
+  }
+}
