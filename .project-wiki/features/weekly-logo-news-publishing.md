@@ -52,6 +52,7 @@ Chinese publishing task:
 - Select the week's 1-2 most important logo/brand update items.
 - Publish at least 1 and at most 2 Chinese posts weekly.
 - Prioritize famous brands and recognizable industry cases.
+- Include rich images in every article.
 - Translate the news into Chinese.
 - Add concise commentary, viewpoint, and insight.
 - Publish to `logosj.com` and `logomaker.com.cn`.
@@ -63,6 +64,7 @@ English Sologo publishing task:
 - Write opinionated, high-quality English articles based on the selected news.
 - Publish at least 1 and at most 5 English posts weekly.
 - Keep language concise, readable, and clear.
+- Include rich images in every article.
 - Move from a logo case to analysis, why it matters, broader industry relevance,
   and related examples.
 - Use multiple internal links.
@@ -76,6 +78,27 @@ SEO rules:
 - Example angle: `Why [Brand] Changed Back to a Monogram Logo`.
 - Content should be SEO-oriented without becoming stiff or keyword-stuffed.
 
+Image rules:
+
+- Every article should include a useful cover image plus multiple in-article
+  images when source material allows.
+- Prefer legitimate source screenshots, official press images, brand newsroom
+  images, or article images with attribution/linking where appropriate.
+- Use deterministic local image processing for collages, before/after grids,
+  crops, resizing, compression, watermarked analysis boards, and image format
+  conversion.
+- Use the `imagegen` skill for newly generated editorial visuals, neutral
+  concept illustrations, mockups, or image edits that benefit from generative
+  composition.
+- Do not fabricate official logos or misleading brand assets. Generated images
+  should be clearly editorial/supporting visuals, not fake source evidence.
+- When publishing to Logomaker, content images should be uploaded first through
+  that platform's upload API and then inserted into HTML with returned URLs.
+- When publishing to Sologo, image cover inputs can be base64, public URL, or
+  OSS path.
+- When publishing to Logosj WordPress, external images in content and featured
+  image URLs are imported by the WordPress plugin.
+
 ## Workflows
 
 1. Review the past week's relevant logo and brand identity news.
@@ -85,12 +108,15 @@ SEO rules:
    can be adapted across languages when appropriate.
 4. For Chinese posts, summarize and translate the facts, then add a short
    viewpoint and practical insight.
-5. For Sologo posts, write a broader English analysis with related examples,
+5. Prepare an image set for each article: cover, source/reference images, and
+   optional comparison collage or analysis graphic.
+6. For Sologo posts, write a broader English analysis with related examples,
    internal links, and generator-specific CTA.
-6. Validate each post against its platform contract before publishing.
-7. Publish drafts first unless the user has explicitly approved direct
+7. Validate each post against its platform contract before publishing.
+8. Publish drafts first unless the user has explicitly approved direct
    publishing for that automation.
-8. Report selected topics, published URLs or draft IDs, and any skipped items.
+9. Report selected topics, image sources/assets, published URLs or draft IDs,
+   and any skipped items.
 
 ## Failure Modes
 
@@ -103,6 +129,9 @@ SEO rules:
   while Logosj tags are arrays.
 - Letting the automation publish live without a review gate if publishing code
   is not yet fully tested.
+- Using generated visuals as if they were official source images.
+- Publishing image-heavy articles without adapting image handling to the target
+  platform.
 
 ## Update Rules
 
