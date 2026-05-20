@@ -14,7 +14,21 @@ First article image set for Peacock:
 Created local analysis board:
 
 - `peacock-logo-analysis-board.svg`
+- `peacock-logo-analysis-board.png`
 - Purpose: editorial explanation graphic, not an official Peacock asset.
+
+Additional Sologo-compatible PNG boards:
+
+- `peacock-app-context-board.svg`
+- `peacock-app-context-board.png`
+- `peacock-logo-checklist-board.svg`
+- `peacock-logo-checklist-board.png`
+
+Uploaded Sologo CDN URLs:
+
+- `https://cdn.sologo.ai/2026/05/2605200551204988.png`
+- `https://cdn.sologo.ai/2026/05/2605200551208652.png`
+- `https://cdn.sologo.ai/2026/05/2605200551201483.png`
 
 For the first draft, images are referenced as external source URLs. Before live
 publishing:

@@ -14,6 +14,18 @@ Date: 2026-05-20
 - First attempt failed because the API did not safely handle apostrophes in HTML
   content. The successful retry converted apostrophes in the body to HTML
   entities.
+- 2026-05-20 layout fix: updated the article body to remove nested `<article>`,
+  `<figure>`, and `<figcaption>` tags, because the published page already wraps
+  API content in `<article class="blog-article"><div class="article-content">`.
+- 2026-05-20 image fix: replaced Wikimedia SVG redirect images with three PNGs
+  uploaded through `act=upload_image` to Sologo CDN:
+  - `https://cdn.sologo.ai/2026/05/2605200551204988.png`
+  - `https://cdn.sologo.ai/2026/05/2605200551208652.png`
+  - `https://cdn.sologo.ai/2026/05/2605200551201483.png`
+- Update API response for the layout/image fix: `{ "status": 0, "msg": "ok" }`
+- Follow-up verification note: immediately after the update, repeated page fetch
+  attempts from the local environment failed with DNS resolution errors for
+  `www.sologo.ai`, so a final automated front-end re-check is still pending.
 
 ## Logosj WordPress
 

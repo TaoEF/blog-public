@@ -99,6 +99,9 @@ Image rules:
   that platform's upload API and then inserted into HTML with returned URLs.
 - When publishing to Sologo, image cover inputs can be base64, public URL, or
   OSS path.
+- For Sologo in-article images, prefer Sologo CDN URLs returned by
+  `act=upload_image`; avoid SVG redirects and nested semantic wrappers that can
+  conflict with the blog template CSS.
 - When publishing to Logosj WordPress, external images in content and featured
   image URLs are imported by the WordPress plugin.
 
@@ -116,6 +119,8 @@ Image rules:
 6. For Sologo posts, write a broader English analysis with related examples,
    internal links, and generator-specific CTA.
 7. Validate each post against its platform contract before publishing.
+   For Sologo, verify content uses the safe HTML subset recorded in
+   `.project-wiki/contracts/sologo-blog-api.md`.
 8. Publish drafts first unless the user has explicitly approved direct
    publishing for that automation.
 9. Report selected topics, image sources/assets, published URLs or draft IDs,

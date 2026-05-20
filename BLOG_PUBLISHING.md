@@ -49,6 +49,22 @@ Validated categories on 2026-05-20:
 - `6`: Japanese Column
 - `4`: Success Story
 
+### Publishing Supplements From Live Test
+
+Observed on 2026-05-20 while publishing Sologo article ID `93`:
+
+- Sologo page templates already wrap API `content` in article containers; do
+  not send a nested top-level `<article>`.
+- Avoid `<figure>` and `<figcaption>` in API content. Use simple `<p>` wrappers,
+  `<img>` tags, and `<p><em>caption</em></p>` instead.
+- Upload article images with `act=upload_image` and use returned
+  `cdn.sologo.ai` URLs. External SVG redirect URLs caused bad images/layout.
+- Convert local graphics to PNG/JPG before upload.
+- Escape apostrophes in `content` as `&#39;`; raw apostrophes triggered a SQL
+  syntax error during create.
+- `dict_status = 2` may still be reachable on the front end by slug; treat
+  Sologo drafts as potentially public until the backend behavior is clarified.
+
 ## Logomaker Design School
 
 - Domain: `https://www.logomaker.com.cn/`
