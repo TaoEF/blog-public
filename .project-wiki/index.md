@@ -19,6 +19,7 @@ This is the durable project knowledge base for AI-assisted development.
 ## Features
 
 - `.project-wiki/features/blog-writing-and-publishing.md`
+- `.project-wiki/features/weekly-logo-news-publishing.md`
 
 ## Contracts
 
