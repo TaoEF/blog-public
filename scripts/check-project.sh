@@ -16,6 +16,7 @@ README.md
 .project-wiki/contracts/logomaker-design-school-api.md
 .project-wiki/contracts/logosj-wordpress-api.md
 .project-wiki/features/blog-writing-and-publishing.md
+.project-wiki/features/sologo-blog-style-guide.md
 .project-wiki/features/weekly-logo-news-publishing.md
 .project-wiki/decisions/skill-plus-automation.md
 "

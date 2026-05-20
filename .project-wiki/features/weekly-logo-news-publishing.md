@@ -11,6 +11,7 @@ sources:
   - path: BLOG_PUBLISHING.md
     status: current
 related:
+  - feature.sologo-blog-style-guide
   - feature.blog-writing-and-publishing
   - architecture.blog-publishing-system
   - contract.sologo-blog-api
@@ -70,6 +71,8 @@ English Sologo publishing task:
 - Use multiple internal links.
 - Final CTA points to relevant Sologo generator pages.
 - Generator page inventory needs to be gathered and maintained before publishing.
+- Sologo articles should use `.project-wiki/features/sologo-blog-style-guide.md`
+  as style reference, while improving depth, originality, and SEO structure.
 
 SEO rules:
 
