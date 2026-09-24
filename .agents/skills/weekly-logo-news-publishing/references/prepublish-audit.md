@@ -35,3 +35,11 @@ The reviewer must check:
   title, broken hierarchy, or broken images.
 
 A `FAIL` blocks that payload until it is revised and independently re-audited.
+
+## Machine-readable fields
+
+The publish adapter requires an `entries` array. Every target entry must contain
+`article_key`, `platform`, `reviewer_id`, `reviewed_at`, `payload_sha256`, and a
+`verdict` equal to `PASS`. `payload_sha256` is the lowercase SHA-256 of the exact
+bytes in the payload file, not a re-serialized JSON object. The matching
+`manifest.json` format is documented in `automations/README.md`.

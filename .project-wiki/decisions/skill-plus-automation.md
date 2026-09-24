@@ -41,15 +41,27 @@ repeatable workflow. Scheduled automations are machine-local thin triggers.
 - `.agents/skills/weekly-logo-news-publishing/` is the portable skill location.
 - Live CMS/API results are canonical for already-published content. Automation
   memory and local run packages are optional diagnostics, not transfer state.
+- `automations/` owns portable thin-prompt templates and installation/cutover
+  instructions; it does not contain machine-generated automation config.
+- `scripts/rebuild-weekly-state.mjs` reconstructs a local publication index
+  from read-only CMS/list APIs. No committed publication ledger is required.
+- `scripts/weekly-publish.mjs` is the only supported live publish entry point.
+  It enforces audited payload hashes, live duplicate checks, explicit live
+  confirmation, and the remote single-executor lease.
+- The lease lives on `refs/heads/automation/weekly-logo-news-lock` by default.
+  Atomic compare-and-swap pushes prevent concurrent acquisition across clones;
+  the ref's commit history is the audit trail.
 
 ## Workflows
 
-- Build the publishing adapter/CLI first.
-- Create or refine a project skill once the writing workflow has repeatable
-  rules.
-- Add scheduled automations after the workflow can run safely on demand.
-- On a new computer, clone the repository, configure local credentials, invoke
-  the repository skill, and query live list APIs before publishing.
+- On a new computer, clone the repository, configure local credentials and a
+  stable `WEEKLY_EXECUTOR_ID`, and run the read-only preflight.
+- Install both local automations from `automations/README.md`. Keep the Monday
+  task in dry-run mode during verification.
+- Rebuild state from the CMS before selecting topics and again through the
+  adapter immediately before publishing.
+- Pause the old Monday task before enabling live mode on the new computer. The
+  live adapter must still acquire the remote lease on every run.
 
 ## Failure Modes
 
@@ -61,6 +73,8 @@ repeatable workflow. Scheduled automations are machine-local thin triggers.
   duplicate topics or posts after a computer change.
 - Creating automation before preflight/publishing adapters can cause live
   publishing mistakes.
+- Relying only on “pause the old task” is not an enforceable cross-computer
+  gate; live writes must pass the remote lease.
 - Building a skill too early can encode untested editorial assumptions.
 
 ## Update Rules
@@ -72,5 +86,5 @@ repeatable workflow. Scheduled automations are machine-local thin triggers.
 
 ## Open Questions
 
-- Should schedule settings eventually have a repository template, or remain
-  entirely machine-local?
+- Should the lock ref eventually be protected by a dedicated GitHub App rather
+  than each executor's existing Git credentials?

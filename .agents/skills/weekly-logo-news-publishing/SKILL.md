@@ -24,15 +24,20 @@ For Sologo writing, also read:
 Before preparing or sending a target-platform payload, read that platform's
 contract under `.project-wiki/contracts/`.
 
+For a scheduled run or a computer handoff, also read
+`automations/README.md`. Use the repository scripts named there; do not copy an
+old computer's automation configuration or memory.
+
 Use the latest complete `reports/weekly-growth/*/content-strategy.json` when it
 exists locally. Its absence on a fresh clone does not block the news workflow;
 record the missing data and rank stories using verified current evidence.
 
 ## Workflow
 
-1. Query each live platform before topic selection and immediately before any
-   publishing request. Treat those CMS/API results as the canonical publication
-   record.
+1. Run `node scripts/weekly-preflight.mjs`, then rebuild the local live index
+   with `node scripts/rebuild-weekly-state.mjs --output
+   .weekly-logo-news/publications.json`. Treat those CMS/API results as the
+   canonical publication record.
 2. Research the last seven days of logo and brand-identity news from the source
    set in the weekly feature page plus official brand or agency sources.
 3. Select at least three distinct, high-value stories. Reject duplicates by
@@ -48,8 +53,11 @@ record the missing data and rank stories using verified current evidence.
 7. Run the independent audit in
    [references/prepublish-audit.md](references/prepublish-audit.md). A current
    `PASS` is required for every payload that may be published.
-8. Publish only when the current task or automation has explicit live-publish
-   authorization. Otherwise stop after the audited dry run.
+8. Validate the package with `node scripts/weekly-publish.mjs --package <path>
+   --mode dry-run`. Publish only when the current task or locally configured
+   automation has explicit live-publish authorization; then use `--mode live
+   --confirm-live`. Never call platform create/publish endpoints around the
+   adapter.
 9. Verify every live URL, status, title, listing visibility, and retained image.
 10. Record the run locally for diagnostics, but rely on the live CMS/API when a
     later run or another computer needs to reconstruct publication state.
@@ -57,6 +65,8 @@ record the missing data and rank stories using verified current evidence.
 ## Non-negotiable safeguards
 
 - Only one computer may run the live-publishing automation at a time.
+- Every live run must acquire the repository adapter's remote Git lease. A
+  paused task, executor name, or local lock file is not a substitute.
 - Never treat a clone, schedule, or API credential as live-publish permission.
 - Never publish a payload whose content, metadata, image order, cover, or URLs
   changed after its audit hash was recorded.
@@ -66,3 +76,5 @@ record the missing data and rank stories using verified current evidence.
 - Keep `drafts/`, `reports/`, downloaded sources, previews, screenshots, and
   automation memory machine-local. Do not copy them into the repository merely
   to transfer the workflow.
+- Do not commit rebuilt publication state. Another computer must reconstruct
+  it from the CMS with the read-only state command.

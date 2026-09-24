@@ -123,7 +123,9 @@ Image rules:
 
 ## Workflows
 
-1. Read the latest complete report under `reports/weekly-growth/`, especially
+1. Run the read-only preflight and rebuild the local publication index from all
+   three live CMS APIs. Read the latest complete report under
+   `reports/weekly-growth/`, especially
    `content-strategy.json`, before researching stories. Use its priority query
    clusters, conversion relevance, semantic gaps, and internal-link targets as
    selection evidence. If current news justifies a different direction, record
@@ -148,10 +150,11 @@ Image rules:
    hashes, per-platform findings, and PASS/FAIL in the weekly package. Any
    content, metadata, cover, image-order, or URL change invalidates PASS.
    Publication is blocked until every target passes.
-10. The active weekly automation has standing authorization for direct live
-   publishing after all platform preflight checks pass. Continue independent
-   safe work if one target fails and report partial failure without duplicating
-   successful posts.
+10. Run the repository adapter in dry-run mode. An active schedule alone does
+   not authorize live publication. Live mode additionally needs explicit local
+   task authorization, the adapter's `--confirm-live` flag, and the remote
+   single-executor lease. Continue independent safe work if one target fails
+   and report partial failure without duplicating successful posts.
 11. Report selected topics, image sources/assets, published URLs or draft IDs,
    and any skipped items.
 
@@ -178,6 +181,8 @@ Editorial variation requirements:
   on external platform CSS to preserve the intended layout.
 - Letting the automation publish live without a review gate if publishing code
   is not yet fully tested.
+- Running direct platform create/publish requests outside the repository
+  adapter, which bypasses the audit hash and single-executor lease.
 - Using generated visuals as if they were official source images.
 - Publishing image-heavy articles without adapting image handling to the target
   platform.
@@ -189,11 +194,11 @@ Editorial variation requirements:
   publishing.
 - Record recurring schedule changes in automation settings, not in API
   contracts.
+- Keep drafts, reports, rebuilt state, and result files machine-local; the live
+  CMS is the canonical record for cross-computer handoff.
 
 ## Open Questions
 
-- Should the first automation create drafts only, or publish live after
-  generation?
 - Which Sologo generator pages should be used as CTA targets?
 - Should Chinese posts be identical across Logosj and Logomaker, or should each
   platform have slightly different intros and metadata?

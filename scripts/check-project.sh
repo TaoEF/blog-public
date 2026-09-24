@@ -23,6 +23,13 @@ README.md
 .agents/skills/weekly-logo-news-publishing/SKILL.md
 .agents/skills/weekly-logo-news-publishing/agents/openai.yaml
 .agents/skills/weekly-logo-news-publishing/references/prepublish-audit.md
+automations/README.md
+automations/weekly-logo-news-publishing.prompt.md
+automations/logo-blog-growth-strategy.prompt.md
+scripts/weekly-preflight.mjs
+scripts/rebuild-weekly-state.mjs
+scripts/weekly-publish.mjs
+scripts/weekly-executor-lock.mjs
 "
 
 for path in $required_paths; do
@@ -31,5 +38,7 @@ for path in $required_paths; do
     exit 1
   fi
 done
+
+node --test scripts/tests/weekly-workflow.test.mjs
 
 echo "Project harness and wiki checks passed."

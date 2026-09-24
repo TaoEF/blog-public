@@ -9,3 +9,12 @@ build/
 
 *.log
 
+# Weekly publishing runtime data is machine-local. Existing tracked history is
+# unaffected, but new weekly packages and reports must not be committed.
+drafts/
+reports/
+.weekly-logo-news/
+.tmp-logo-news-*/
+
+# Local API notes may contain credentials.
+LOGOMAKER_LOGOSJ_API_USAGE.md
