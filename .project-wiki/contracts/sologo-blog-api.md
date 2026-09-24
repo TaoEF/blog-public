@@ -4,7 +4,7 @@ type: contract
 status: active
 owners:
   - BLOG_PUBLISHING.md
-updated: 2026-05-20
+updated: 2026-09-24
 sources:
   - path: https://www.sologo.ai/api/blog_post.md
     status: current
@@ -64,6 +64,10 @@ template behavior changes.
   - `<em>`
   - `<a href="...">`
   - `<img src="..." alt="..." style="width:100%;max-width:100%;height:auto;...">`
+- SologoAI article rendering is affected by external site CSS. Complete inline
+  styling is mandatory in stored HTML. Put typography, spacing, lists, links,
+  images, captions, tables, and callouts on the elements' `style` attributes.
+  Do not rely on classes, `<style>` blocks, inherited CSS, or bare semantic HTML.
 - Put images inside a `<p>` wrapper and captions in a following `<p><em>...`.
 - Use Sologo CDN image URLs returned by `act=upload_image` for in-article
   images. Do not rely on Wikimedia `Special:Redirect` URLs or SVG redirects in
@@ -78,6 +82,10 @@ template behavior changes.
   until verified otherwise.
 - If H2 spacing looks too tight, add a spacer paragraph before H2 or fix the
   platform CSS.
+- If heading-to-body spacing looks too tight in Sologo rendering, insert an
+  explicit blank line right after the heading:
+  - `<p><br /></p>`
+  This matches the spacing behavior seen in native Sologo richtext articles.
 
 Validated categories on 2026-05-20:
 
@@ -93,6 +101,11 @@ Validated categories on 2026-05-20:
 - List articles with `GET act=list`.
 - Create drafts with `POST act=create` and default `dict_status = 2`.
 - Publish with either `dict_status = 1` during create or `POST act=publish`.
+- For homepage/category-list inclusion, verify `ptime` after publishing. A
+  direct create with `dict_status = 1` can make the article reachable by slug
+  while leaving `ptime` empty; calling `POST act=publish` with
+  `{ "id": post_id, "status": 1 }` populated `ptime` and made article ID `95`
+  appear in the Tutorials & Guides list on 2026-06-22.
 - Upload images with `POST act=upload_image`.
 
 ## Failure Modes
@@ -112,10 +125,27 @@ Validated categories on 2026-05-20:
 - Re-verify categories before using a category ID in an automated workflow.
 - Keep API key only in local secrets or environment variables.
 - For every Sologo article, run a post-publish HTML check and verify there are
-  no `Special:Redirect` image URLs, no nested top-level `<article>`, and no
-  `<figure>` tags in API content.
+  no `Special:Redirect` image URLs, no nested top-level `<article>`, no
+  `<figure>` tags, and that key rich-text elements retain inline styles.
+- For posts expected to appear on `/blog/` category sections, verify the
+  category list API returns the post and that homepage cards have a non-empty
+  `img_cover`.
 
 ## Open Questions
 
 - Which author dictionary IDs should recurring tasks use?
 - Should default status be draft for all automated posts?
+
+## Observed Rendering — 2026-09-14
+
+Verified with live articles 120–122 and the public blog homepage. Re-query the
+live list API and public pages when the template behavior may have changed.
+
+- The current detail template starts with article body text and does not display
+  `img_cover` as a hero. The cover remains required for homepage/category cards.
+  Do not assume a missing detail hero means the cover upload failed, and do not
+  insert the cover into the body automatically.
+- Homepage HTML emits card images as Vue `v-img` elements. Read their `src`
+  attributes, verify the generated CDN thumbnail URLs, and inspect browser
+  rendering; a server-HTML check limited to `img` can incorrectly report missing
+  covers.

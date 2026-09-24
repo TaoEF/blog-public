@@ -17,4 +17,5 @@ Map task types to workflows and wiki pages.
 | Blog platform API change | `.harness/workflows/wiki-update.md` | `.project-wiki/contracts/*.md`, `BLOG_PUBLISHING.md` |
 | Publishing adapter or CLI work | `.harness/workflows/large-change.md` | `.project-wiki/architecture/blog-publishing-system.md`, relevant API contracts |
 | Blog writing workflow | `.harness/workflows/small-change.md` | `.project-wiki/features/blog-writing-and-publishing.md` |
+| Weekly logo/news writing or publishing | `.harness/workflows/large-change.md` | `.agents/skills/weekly-logo-news-publishing/SKILL.md`, `.project-wiki/features/weekly-logo-news-publishing.md` |
 | Scheduled blog task | `.harness/workflows/large-change.md` | `.project-wiki/decisions/skill-plus-automation.md` |

@@ -4,7 +4,7 @@ type: contract
 status: active
 owners:
   - BLOG_PUBLISHING.md
-updated: 2026-05-20
+updated: 2026-09-24
 sources:
   - path: https://www.logosj.com/docs/wp_publisher_api.md
     status: current
@@ -59,6 +59,10 @@ published posts and import external images into the WordPress media library.
 - Send `categories` and `tags` as arrays.
 - Let the plugin import external images in `content` and `featured_image_url`.
 - Use stable PNG/JPG URLs for images. CDN/OSS image URLs worked in live testing.
+- Publish fully inline-styled HTML. External WordPress/theme CSS affects article
+  rendering, so define typography, spacing, lists, links, images, captions,
+  tables, and callouts with element-level `style` attributes. Do not rely on
+  classes, `<style>` blocks, inherited CSS, or bare semantic HTML.
 
 ## Failure Modes
 
@@ -69,6 +73,8 @@ published posts and import external images into the WordPress media library.
 - Missing categories by name may be auto-created, which can create taxonomy
   drift if names are inconsistent.
 - Wikimedia SVG redirect URLs failed image import in live testing.
+- Layout drift when content relies on WordPress/theme CSS instead of complete
+  inline styles.
 
 ## Update Rules
 

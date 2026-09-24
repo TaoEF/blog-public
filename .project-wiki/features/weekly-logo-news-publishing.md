@@ -4,11 +4,14 @@ type: feature
 status: active
 owners:
   - BLOG_PUBLISHING.md
-updated: 2026-05-20
+  - .agents/skills/weekly-logo-news-publishing/SKILL.md
+updated: 2026-09-24
 sources:
   - path: user request on 2026-05-20
     status: current
   - path: BLOG_PUBLISHING.md
+    status: current
+  - path: .agents/skills/weekly-logo-news-publishing/SKILL.md
     status: current
 related:
   - feature.sologo-blog-style-guide
@@ -50,8 +53,8 @@ they help identify higher-value weekly topics.
 
 Chinese publishing task:
 
-- Select the week's 1-2 most important logo/brand update items.
-- Publish at least 1 and at most 2 Chinese posts weekly.
+- Select at least 3 important logo/brand update items each week.
+- Publish the Chinese localization of every successfully verified weekly Sologo story to both Logosj and Logomaker.
 - Prioritize famous brands and recognizable industry cases.
 - Include rich images in every article.
 - Translate the news into Chinese.
@@ -62,8 +65,7 @@ Chinese publishing task:
 
 English Sologo publishing task:
 
-- Write opinionated, high-quality English articles based on the selected news.
-- Publish at least 1 and at most 5 English posts weekly.
+- Write and publish at least 3 opinionated, high-quality English articles based on distinct selected news stories.
 - Keep language concise, readable, and clear.
 - Include rich images in every article.
 - Move from a logo case to analysis, why it matters, broader industry relevance,
@@ -87,12 +89,21 @@ Image rules:
   images when source material allows.
 - Prefer legitimate source screenshots, official press images, brand newsroom
   images, or article images with attribution/linking where appropriate.
-- Use deterministic local image processing for collages, before/after grids,
-  crops, resizing, compression, watermarked analysis boards, and image format
-  conversion.
-- Use the `imagegen` skill for newly generated editorial visuals, neutral
-  concept illustrations, mockups, or image edits that benefit from generative
+- Use deterministic local image processing only for source-based crops,
+  before/after grids, contact sheets, resizing, compression, watermarks, and
+  image format conversion.
+- Use the `imagegen` skill with GPT-Image-2 for high-quality newly generated
+  editorial visuals, neutral concept illustrations, mockups, material studies,
+  spatial compositions, or visual metaphors that benefit from generative
   composition.
+- Do not create text-heavy SVG analysis boards, boxed-card diagrams, simple
+  geometric placeholders, wireframes, or slide-like infographics as article
+  covers or supporting editorial images. They repeat the prose without adding
+  visual value.
+- Prefer polished raster editorial imagery with little or no embedded text.
+  Keep detailed analysis in the article copy and caption.
+- SVG is allowed only when a task genuinely requires a precise reusable vector
+  diagram or chart; it is not the default source format for blog imagery.
 - Do not fabricate official logos or misleading brand assets. Generated images
   should be clearly editorial/supporting visuals, not fake source evidence.
 - When publishing to Logomaker, content images should be uploaded first through
@@ -102,29 +113,57 @@ Image rules:
 - For Sologo in-article images, prefer Sologo CDN URLs returned by
   `act=upload_image`; avoid SVG redirects and nested semantic wrappers that can
   conflict with the blog template CSS.
+- For SologoAI, Logomaker, and Logosj, final article `content` must use complete
+  element-level inline styles. External site CSS affects all three platforms,
+  so explicitly control typography, spacing, lists, links, images, captions,
+  tables, and callouts. Do not rely on classes, `<style>` blocks, inherited CSS,
+  or bare semantic HTML.
 - When publishing to Logosj WordPress, external images in content and featured
   image URLs are imported by the WordPress plugin.
 
 ## Workflows
 
-1. Review the past week's relevant logo and brand identity news.
-2. Rank candidates by brand familiarity, visual/strategic significance, search
+1. Read the latest complete report under `reports/weekly-growth/`, especially
+   `content-strategy.json`, before researching stories. Use its priority query
+   clusters, conversion relevance, semantic gaps, and internal-link targets as
+   selection evidence. If current news justifies a different direction, record
+   the evidence for the deviation rather than silently ignoring the strategy.
+2. Review the past week's relevant logo and brand identity news.
+3. Rank candidates by brand familiarity, visual/strategic significance, search
    demand, and usefulness to logo creators.
-3. Select 1-2 Chinese topics and 1-5 English Sologo topics. The same core item
-   can be adapted across languages when appropriate.
-4. For Chinese posts, summarize and translate the facts, then add a short
+4. Select at least 3 distinct topics. Publish each English Sologo article first;
+   after it succeeds and is verified, localize the same story for both Chinese
+   platforms. A normal weekly run therefore publishes at least 9 platform posts.
+5. For Chinese posts, summarize and translate the facts, then add a short
    viewpoint and practical insight.
-5. Prepare an image set for each article: cover, source/reference images, and
+6. Prepare an image set for each article: cover, source/reference images, and
    optional comparison collage or analysis graphic.
-6. For Sologo posts, write a broader English analysis with related examples,
+7. For Sologo posts, write a broader English analysis with related examples,
    internal links, and generator-specific CTA.
-7. Validate each post against its platform contract before publishing.
-   For Sologo, verify content uses the safe HTML subset recorded in
-   `.project-wiki/contracts/sologo-blog-api.md`.
-8. Publish drafts first unless the user has explicitly approved direct
-   publishing for that automation.
-9. Report selected topics, image sources/assets, published URLs or draft IDs,
+8. Validate each post against its platform contract before publishing.
+   For SologoAI, Logomaker, and Logosj, verify every layout-bearing element has
+   complete inline rich-text styles.
+9. Run an independent pre-publish audit on the exact final payloads after image
+   URL substitution. Record reviewer/run ID, payload hashes, image-source
+   hashes, per-platform findings, and PASS/FAIL in the weekly package. Any
+   content, metadata, cover, image-order, or URL change invalidates PASS.
+   Publication is blocked until every target passes.
+10. The active weekly automation has standing authorization for direct live
+   publishing after all platform preflight checks pass. Continue independent
+   safe work if one target fails and report partial failure without duplicating
+   successful posts.
+11. Report selected topics, image sources/assets, published URLs or draft IDs,
    and any skipped items.
+
+Editorial variation requirements:
+
+- Use article-specific headlines, hooks, headings, section order, examples, and
+  CTA transitions; do not reuse one visible template across the weekly batch.
+- Localize Chinese articles as native editorial writing rather than translating
+  English paragraphs sentence by sentence.
+- Treat platform cover/featured images as already rendered. The same source
+  image must not reappear as the first body image or elsewhere in the body
+  without a necessary analytical reason.
 
 ## Failure Modes
 
@@ -135,6 +174,8 @@ Image rules:
 - Publishing Sologo content before Sologo generator CTA URLs are inventoried.
 - Forgetting Chinese platform differences: Logomaker tags are space-separated,
   while Logosj tags are arrays.
+- Publishing bare semantic HTML to SologoAI, Logomaker, or Logosj and relying
+  on external platform CSS to preserve the intended layout.
 - Letting the automation publish live without a review gate if publishing code
   is not yet fully tested.
 - Using generated visuals as if they were official source images.

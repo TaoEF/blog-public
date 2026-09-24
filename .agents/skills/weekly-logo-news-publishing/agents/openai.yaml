@@ -1,0 +1,4 @@
+interface:
+  display_name: "Weekly Logo News Publishing"
+  short_description: "Create and publish audited logo-news articles"
+  default_prompt: "Use $weekly-logo-news-publishing to run this week's logo and brand-identity news workflow."

@@ -20,6 +20,9 @@ README.md
 .project-wiki/features/sologo-blog-style-guide.md
 .project-wiki/features/weekly-logo-news-publishing.md
 .project-wiki/decisions/skill-plus-automation.md
+.agents/skills/weekly-logo-news-publishing/SKILL.md
+.agents/skills/weekly-logo-news-publishing/agents/openai.yaml
+.agents/skills/weekly-logo-news-publishing/references/prepublish-audit.md
 "
 
 for path in $required_paths; do

@@ -4,7 +4,7 @@ type: contract
 status: active
 owners:
   - BLOG_PUBLISHING.md
-updated: 2026-05-20
+updated: 2026-09-24
 sources:
   - path: https://www.logomaker.com.cn/api/design_school.md
     status: current
@@ -64,6 +64,11 @@ Validated categories on 2026-05-20:
   `img_thumb`; it can produce malformed duplicated URLs.
 - Use simple HTML only. Avoid top-level `<article>`, `<figure>`,
   `<figcaption>`, and custom classes.
+- Logomaker article rendering is affected by external site CSS. Complete inline
+  styling is mandatory. Generate element-level `style` attributes for
+  paragraphs, headings, lists, list items, links, images, captions, tables, and
+  special blocks before `publish` or `update`. Do not rely on classes, `<style>`
+  blocks, inherited CSS, or bare semantic HTML.
 - If the page CSS makes H2 spacing too tight, use a spacer paragraph before H2
   or fix the platform stylesheet.
 
@@ -76,10 +81,19 @@ Validated categories on 2026-05-20:
   content-image workflow.
 - Older docs lacked update/unpublish; current docs now support those actions.
 - Page CSS/scripts can conflict with rich HTML structures or custom classes.
+- Bare semantic HTML can render under-styled because platform articles rely on
+  stored rich-text inline styles.
 - The page script transforms `.d_s_details_container .template` images into
   template-editor widgets, so never use `class="template"` in API content.
 - Mixed Chinese/English title length validation may behave closer to byte length
   than visible character count; keep titles short.
+- Live publishing on 2026-08-05 confirmed that the 50-character title validator
+  is substantially more conservative than visible Unicode character count.
+  Use short Logomaker-specific SEO titles for mixed Chinese/English headlines.
+- The Logomaker backend also returned a SQL error when inline `font-family`
+  declarations contained raw single quotes. Encode apostrophes in final
+  Logomaker `content` as `&#39;` before `publish` or `update`, while leaving
+  metadata fields unchanged.
 
 ## Update Rules
 

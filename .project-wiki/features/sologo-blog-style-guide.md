@@ -4,7 +4,7 @@ type: feature
 status: active
 owners:
   - BLOG_PUBLISHING.md
-updated: 2026-05-20
+updated: 2026-09-24
 sources:
   - path: https://www.sologo.ai/blog/create-stunning-ai-logos-from-text-%E2%80%93-ai-logo-generator/
     status: current
@@ -65,6 +65,16 @@ Observed Sologo blog patterns:
   product visuals.
 - Pages commonly include `Recommend Articles` and `Generate Your Logo Now`.
 - Footer/nav internal links emphasize product tools and logo-maker categories.
+- Sologo rich-text rendering relies heavily on inline styles in the stored
+  article HTML. Published content should not be bare semantic HTML. Match the
+  native pattern from existing posts:
+  - paragraphs use Tahoma at 16px with `line-height: 1.5`, plus nested Verdana
+    and `#333333` spans;
+  - H2 headings use Tahoma at about 32px with 32px top/bottom margins;
+  - H3 headings use Tahoma at about 24px with 24px top/bottom margins;
+  - lists carry inline font, size, line-height, spacing, and item text spans;
+  - tables, code blocks, and special sections need their own inline layout
+    styles.
 
 Recommended improvement for weekly logo news posts:
 
@@ -81,6 +91,9 @@ Recommended improvement for weekly logo news posts:
 - Include rich visuals: source images, before/after comparison, analysis collage,
   and relevant Sologo-generated/supporting visuals when appropriate.
 - End with a specific Sologo CTA matched to the article topic.
+- Match native Sologo richtext spacing when needed: add a blank line right after
+  each heading using `<p><br /></p>` to keep breathing room between headings and
+  body copy.
 
 ## Workflows
 
