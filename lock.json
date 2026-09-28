@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "state": "active",
+  "state": "released",
   "executor_id": "mini-blog-public",
   "lease_id": "91fc347b-ed3b-4c79-8d49-109e19c297b1",
   "run_id": "2026-W40-6c818084-1d53-4d14-b32a-67c09d53fb44",
   "acquired_at": "2026-09-28T01:37:56.781Z",
   "expires_at": "2026-09-28T04:37:56.781Z",
-  "previous_lease_id": "c97b126a-e003-49e7-9668-631e1dc70169"
+  "previous_lease_id": "c97b126a-e003-49e7-9668-631e1dc70169",
+  "released_at": "2026-09-28T01:38:41.548Z"
 }
