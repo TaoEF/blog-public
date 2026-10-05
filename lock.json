@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "state": "active",
+  "state": "released",
   "executor_id": "yifutao-blog-public-mac",
   "lease_id": "ad670d24-1550-49da-b5f1-074d9223a5d6",
   "run_id": "2026-W41-e6cf2497-b900-4cfe-9ace-d3881b7973fb",
   "acquired_at": "2026-10-05T01:34:16.444Z",
   "expires_at": "2026-10-05T04:34:16.444Z",
-  "previous_lease_id": "cc57f2e0-fcea-409d-9b1c-3f8f41df3bbb"
+  "previous_lease_id": "cc57f2e0-fcea-409d-9b1c-3f8f41df3bbb",
+  "released_at": "2026-10-05T01:34:55.575Z"
 }
