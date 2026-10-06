@@ -1,11 +1,10 @@
 {
   "schema_version": 1,
-  "state": "released",
-  "executor_id": "yifutao-blog-public-mac",
-  "lease_id": "94865916-0f8c-473e-9bdd-8ca85c784b5f",
-  "run_id": "2026-W41-1f1a4e6d-0c3e-4d87-9118-c5d6cbf46163",
-  "acquired_at": "2026-10-05T01:35:42.815Z",
-  "expires_at": "2026-10-05T04:35:42.815Z",
-  "previous_lease_id": "ad670d24-1550-49da-b5f1-074d9223a5d6",
-  "released_at": "2026-10-05T01:36:49.741Z"
+  "state": "active",
+  "executor_id": "mini-blog-public",
+  "lease_id": "de357081-285c-4c0e-92ef-b54c2ee4fc9d",
+  "run_id": "2026-10-06-04705c35-0715-4bdb-a3d3-5722b27e3777",
+  "acquired_at": "2026-10-06T03:25:00.244Z",
+  "expires_at": "2026-10-06T06:25:00.244Z",
+  "previous_lease_id": "94865916-0f8c-473e-9bdd-8ca85c784b5f"
 }
